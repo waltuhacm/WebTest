@@ -10,34 +10,105 @@ h1 {
     color: #333;
 }
 
-nav {
+.nav-links {
     text-align: center;
     margin: 20px 0;
 }
 
-nav a {
+.nav-links a {
     margin: 0 15px;
     text-decoration: none;
     color: #007BFF;
     font-weight: bold;
 }
 
-nav a:hover {
+.nav-links ul a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
     text-decoration: underline;
 }
 
 .audio-container {
-    display: none; /* Hide audio elements on the main homepage */
+    display: none;
 }
 
-.homepage {
+.bg-nosleep {
+    background-image: url("images/NoSleep.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.center-container {
+    height: 55vh;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    height: 100vh;
+    align-items: center;
 }
 
-.homepage h2 {
-    color: #555;
+.enter-link {
+    font-size: 2rem;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px 40px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+
+.enter-link:hover {
+    background: #fff;
+    color: #222;
+    transform: scale(1.08);
+}
+
+.nav-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.center-text {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.bg-xp {
+    background-image: url("images/xp.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.bg-mental {
+    background-image: url("images/DiscordBanner.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.bg-cp {
+    background-image: url("images/Mac.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+}
+
+.bg-home {
+    background-image: url("images/KSnHY7G.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
