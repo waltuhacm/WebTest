@@ -3,9 +3,10 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: 'Orbitron', Arial, sans-serif;
+    font-family: 'VT323', monospace;
     background-color: #181c24;
     color: #f8f8f8;
+    overflow-x: hidden;
     margin: 0;
     padding: 0;
 }
@@ -21,42 +22,51 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Home background: match KSnHY7G.gif (e.g. blue/purple) */
-.bg-home h1 {
+.bg-home h1,
+.bg-home .nav-links a,
+.bg-home .song-info span {
     background: linear-gradient(90deg, #00c3ff, #fc00ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: transparent;
 }
 
-/* Creative Projects: match Mac.gif (e.g. green/blue) */
-.bg-cp h1 {
+.bg-cp h1,
+.bg-cp .nav-links a,
+.bg-cp .song-info span {
     background: linear-gradient(90deg, #43e97b, #38f9d7);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: transparent;
 }
 
-/* XP: match xp.gif (e.g. blue/yellow) */
-.bg-xp h1 {
-    background: linear-gradient(90deg, #1e90ff, #ffe259);
+.bg-xp h1,
+.bg-xp .nav-links a,
+.bg-xp .song-info span {
+    background: linear-gradient(90deg, #1e90ff, #7fff00);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: transparent;
 }
 
-/* Mental: match DiscordBanner.gif (e.g. purple/teal) */
-.bg-mental h1 {
-    background: linear-gradient(90deg, #8e54e9, #43cea2);
+.bg-mental h1,
+.bg-mental .nav-links a,
+.bg-mental .song-info span {
+    background: linear-gradient(90deg, #7289da, #8e54e9);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: transparent;
 }
 
-/* NoSleep: match NoSleep.gif (e.g. orange/red) */
-.bg-nosleep h1 {
-    background: linear-gradient(90deg, #ff512f, #dd2476);
+.bg-nosleep h1,
+.bg-nosleep .nav-links a,
+.bg-nosleep .song-info span {
+    background: linear-gradient(90deg, #ff512f, #dd2476, #ffb347);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: transparent;
 }
 
-/* Navigation Bar */
 .nav-links {
     display: flex;
     justify-content: center;
@@ -79,7 +89,6 @@ h1 {
     display: inline;
 }
 
-/* Default nav link style */
 .nav-links a {
     color: #ff8a00;
     font-size: 1.1rem;
@@ -90,47 +99,6 @@ h1 {
     -webkit-text-fill-color: initial;
 }
 
-/* Home background: blue/purple gradient */
-.bg-home .nav-links a {
-    background: linear-gradient(90deg, #00c3ff, #fc00ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-}
-
-/* Creative Projects: green/blue gradient */
-.bg-cp .nav-links a {
-    background: linear-gradient(90deg, #43e97b, #38f9d7);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-}
-
-/* XP: blue/yellow gradient */
-.bg-xp .nav-links a {
-    background: linear-gradient(90deg, #1e90ff, #ffe259);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-}
-
-/* Mental: purple/teal gradient */
-.bg-mental .nav-links a {
-    background: linear-gradient(90deg, #8e54e9, #43cea2);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-}
-
-/* NoSleep: orange/red gradient */
-.bg-nosleep .nav-links a {
-    background: linear-gradient(90deg, #ff512f, #dd2476);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-}
-
-/* Glassmorphism Card for Main Content */
 .center-text {
     background: rgba(24, 28, 36, 0.7);
     border-radius: 18px;
@@ -146,7 +114,6 @@ h1 {
     animation: fadeIn 1.2s;
 }
 
-/* Fade-in Animation */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -159,7 +126,6 @@ h1 {
     }
 }
 
-/* Custom Audio Player (hidden by default, show on hover) */
 audio {
     display: block;
     margin: 20px auto 0 auto;
@@ -173,7 +139,6 @@ audio:hover {
     opacity: 1;
 }
 
-/* Background Images */
 .bg-nosleep {
     background-image: url("gifs/NoSleep.gif");
 }
@@ -187,11 +152,11 @@ audio:hover {
 }
 
 .bg-cp {
-    background-image: url("gifs/Mac.gif");
+    background-image: url("gifs/dolph.gif");
 }
 
 .bg-home {
-    background-image: url("gifs/KSnHY7G.gif");
+    background-image: url("gifs/home.gif");
 }
 
 .bg-home,
@@ -199,11 +164,13 @@ audio:hover {
 .bg-xp,
 .bg-mental,
 .bg-nosleep {
-    height: 100%;
+    min-height: 100%;
     width: 100%;
-    background-size: cover;
+    background-size: 100vw 100vh; /* Stretch to fill viewport */
     background-repeat: no-repeat;
-    background-position: bottom center;
+    background-position: center center;
+    margin: 0;
+    padding: 0;
 }
 
 .song-info {
@@ -226,59 +193,6 @@ audio:hover {
     -webkit-text-fill-color: initial;
 }
 
-/* Home background: blue/purple gradient */
-.bg-home .song-info span {
-    background: linear-gradient(90deg, #00c3ff, #fc00ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-}
-
-/* Creative Projects: green/blue gradient */
-.bg-cp .song-info span {
-    background: linear-gradient(90deg, #43e97b, #38f9d7);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-}
-
-/* XP: blue/yellow gradient */
-.bg-xp .song-info span {
-    background: linear-gradient(90deg, #1e90ff, #ffe259);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-}
-
-/* Mental: purple/teal gradient */
-.bg-mental .song-info span {
-    background: linear-gradient(90deg, #8e54e9, #43cea2);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-}
-
-/* NoSleep: orange/red gradient */
-.bg-nosleep .song-info span {
-    background: linear-gradient(90deg, #ff512f, #dd2476);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-}
-
-.song-info audio {
-    height: 28px;
-    opacity: 0.92;
-    filter: drop-shadow(0 0 6px #e52e71);
-    border-radius: 10px;
-    transition: box-shadow 0.2s;
-}
-
-.song-info audio:hover {
-    box-shadow: 0 0 12px #e52e71;
-}
-
-/* Wiggle Animation for Images */
 .dead-inside {
     display: block;
     margin: 24px auto 0 auto;
@@ -298,7 +212,6 @@ audio:hover {
     }
 }
 
-/* Responsive Design */
 @media (max-width: 600px) {
     h1 {
         font-size: 1.5rem;
