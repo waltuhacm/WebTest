@@ -14,7 +14,9 @@
 </head>
 
 <body class="bg-cp">
-    <h1>Creative Projects</h1>
+    <div class="center-header">
+        <h1>Creative Projects</h1>
+    </div>
     <div class="nav-links">
         <p><a href="home.html">Back to Main Homepage</a></p>
     </div>
@@ -30,14 +32,31 @@
         <br>
         <br>
         <a href="https://www.twitch.tv/seanthekip" target="_blank">Twitch Channel</a>
-        <img src="images/katboard.png"
-            alt="dead inside" class="dead-inside">
+        <img src="images/katboard.png" alt="dead inside" class="dead-inside">
+    </div>
+
+    <div class="video-embeds">
+        <div class="youtubevideo">
+            <span class="gradient-label">Latest Video:</span>
+            <iframe width="400" height="225" src="https://www.youtube.com/embed/_q6TLu_-25Y?si=QhBsfp73Sf4-Z7I9"
+                title="Latest YouTube Video" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div>
+        <div class="twitchchannel">
+            <span class="gradient-label">Twitch Channel:</span>
+            <iframe src="https://player.twitch.tv/?channel=seanthekip&parent=waltuhacm.github.io" frameborder="0"
+                allowfullscreen="true" scrolling="no" height="225" width="400">
+            </iframe>
+        </div>
     </div>
 
     <div class="song-info">
         <span>Current Song: Network (Unused) from Marvel Vs. Capcom 2</span>
         <audio id="MenuMusic" src="music\06. Network (Unused).mp3" autoplay loop controls></audio>
     </div>
+
 </body>
 <script src="onepage.js"></script>
+
 </html>

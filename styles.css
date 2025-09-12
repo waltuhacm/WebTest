@@ -11,15 +11,65 @@ body {
     padding: 0;
 }
 
-h1 {
+.center-header {
     text-align: center;
+    width: 100%;
+}
+
+h1 {
+    position: relative;
     font-size: 2.5rem;
-    background: linear-gradient(90deg, #ff8a00, #e52e71);
+    font-weight: bold;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 2px 2px 8px #000a;
+    text-shadow: 0px 10px 30px #222222;
     margin-top: 40px;
     margin-bottom: 20px;
+    display: inline-block;
+}
+
+h1::after {
+    content: "";
+    display: block;
+    height: 3px;
+    width: 100%;
+    margin: 0 auto;
+    background: linear-gradient(90deg, #fc00ff, #00c3ff);
+    border-radius: 0;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+}
+
+/* Default underline for fallback */
+h1::after {
+    background: linear-gradient(90deg, #fc00ff, #00c3ff);
+}
+
+/* Home theme underline */
+.bg-home h1::after {
+    background: linear-gradient(90deg, #00c3ff, #fc00ff);
+}
+
+/* CP theme underline */
+.bg-cp h1::after {
+    background: linear-gradient(90deg, #43e97b, #38f9d7);
+}
+
+/* XP theme underline */
+.bg-xp h1::after {
+    background: linear-gradient(90deg, #1e90ff, #7fff00);
+}
+
+/* Mental theme underline */
+.bg-mental h1::after {
+    background: linear-gradient(90deg, #7289da, #8e54e9);
+}
+
+/* No Sleep theme underline */
+.bg-nosleep h1::after {
+    background: linear-gradient(90deg, #ff512f, #dd2476, #ffb347);
 }
 
 .bg-home h1,
@@ -27,6 +77,7 @@ h1 {
 .bg-home .song-info span {
     background: linear-gradient(90deg, #00c3ff, #fc00ff);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
 }
@@ -36,6 +87,7 @@ h1 {
 .bg-cp .song-info span {
     background: linear-gradient(90deg, #43e97b, #38f9d7);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
 }
@@ -45,6 +97,7 @@ h1 {
 .bg-xp .song-info span {
     background: linear-gradient(90deg, #1e90ff, #7fff00);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
 }
@@ -54,6 +107,7 @@ h1 {
 .bg-mental .song-info span {
     background: linear-gradient(90deg, #7289da, #8e54e9);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
 }
@@ -63,6 +117,7 @@ h1 {
 .bg-nosleep .song-info span {
     background: linear-gradient(90deg, #ff512f, #dd2476, #ffb347);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
 }
@@ -71,7 +126,6 @@ h1 {
     display: flex;
     justify-content: center;
     background: rgba(30, 30, 40, 0.85);
-    border-radius: 16px;
     margin: 0 auto 30px auto;
     width: fit-content;
     padding: 10px 40px;
@@ -89,19 +143,8 @@ h1 {
     display: inline;
 }
 
-.nav-links a {
-    color: #ff8a00;
-    font-size: 1.1rem;
-    transition: color 0.2s, text-shadow 0.2s;
-    text-shadow: 1px 1px 4px #000a;
-    background: none;
-    -webkit-background-clip: initial;
-    -webkit-text-fill-color: initial;
-}
-
 .center-text {
     background: rgba(24, 28, 36, 0.7);
-    border-radius: 18px;
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
@@ -140,7 +183,7 @@ audio:hover {
 }
 
 .bg-nosleep {
-    background-image: url("gifs/NoSleep.gif");
+    background-image: url("gifs/sleep.gif");
 }
 
 .bg-xp {
@@ -148,7 +191,7 @@ audio:hover {
 }
 
 .bg-mental {
-    background-image: url("gifs/DiscordBanner.gif");
+    background-image: url("gifs/cool.gif");
 }
 
 .bg-cp {
@@ -166,7 +209,8 @@ audio:hover {
 .bg-nosleep {
     min-height: 100%;
     width: 100%;
-    background-size: 100vw 100vh; /* Stretch to fill viewport */
+    background-size: 100vw 100vh;
+    /* Stretch to fill viewport */
     background-repeat: no-repeat;
     background-position: center center;
     margin: 0;
@@ -190,6 +234,8 @@ audio:hover {
     text-shadow: 1px 1px 4px #000a;
     background: none;
     -webkit-background-clip: initial;
+    background-clip: text;
+
     -webkit-text-fill-color: initial;
 }
 
@@ -212,6 +258,58 @@ audio:hover {
     }
 }
 
+.video-embeds {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin: 40px 0;
+}
+
+.youtubevideo,
+.twitchchannel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.youtubevideo iframe,
+.twitchchannel iframe {
+    border: 3px solid #43e97b;
+    box-shadow: 0 4px 24px #0006;
+    background: #181c24;
+    padding: 0;
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.youtubevideo iframe:hover,
+.twitchchannel iframe:hover {
+    border-color: #9c3fee;
+    box-shadow: 0 8px 32px #ee0000;
+}
+
+.bg-cp .gradient-label {
+    display: block;
+    font-size: 1.2rem;
+    font-family: inherit;
+    margin-bottom: 8px;
+    background: linear-gradient(90deg, #ee0000, #9c3fee);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 900px) {
+    .video-embeds {
+        flex-direction: column;
+        gap: 24px;
+    }
+}
+
 @media (max-width: 600px) {
     h1 {
         font-size: 1.5rem;
@@ -230,4 +328,96 @@ audio:hover {
     audio {
         width: 90vw;
     }
+}
+
+.enter-link {
+    display: inline-block;
+    padding: 10px 32px;
+    font-size: 2rem;
+    font-family: 'VT323', monospace;
+    font-weight: normal;
+    color: #ffffff;
+    background: #000;
+    border: 3px solid #9268b1;
+    box-shadow: 4px 4px 0 #222, 0 0 16px #b24d69;
+    text-decoration: none;
+    text-align: center;
+    letter-spacing: 2px;
+    text-shadow: 0 0 4px #b24d69, 1px 1px 0 #222;
+    margin: 0 auto 0 auto;
+    margin-bottom: 24px;
+    transition: background 0.15s, color 0.15s, box-shadow 0.15s, border-color 0.15s;
+    animation: fadeIn 1.2s;
+    cursor: pointer;
+    position: relative;
+    top: -200px;
+}
+
+.enter-link:hover,
+.enter-link:focus {
+    background: #222;
+    color: #fff;
+    border-color: #fff;
+    box-shadow: 2px 2px 0 #b24d69, 0 0 24px #b24d69;
+    text-shadow: 0 0 8px #fff, 1px 1px 0 #b24d69;
+    outline: none;
+}
+
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Nav bar highlight per theme */
+.bg-home .nav-links {
+    border: 1px solid #fc00ff;
+    box-shadow: 0 0 12px #00c3ff, 0 2px 16px #0004;
+}
+
+.bg-cp .nav-links {
+    border: 3px solid #43e97b;
+    box-shadow: 0 0 12px #43e97b, 0 2px 16px #0004;
+}
+
+.bg-xp .nav-links {
+    border: 3px solid #1e90ff;
+    box-shadow: 0 0 12px #1e90ff, 0 2px 16px #0004;
+}
+
+.bg-mental .nav-links {
+    border: 3px solid #7289da;
+    box-shadow: 0 0 12px #7289da, 0 2px 16px #0004;
+}
+
+.bg-nosleep .nav-links {
+    border: 3px solid #ff512f;
+    box-shadow: 0 0 12px #ff512f, 0 2px 16px #0004;
+}
+
+/* Center text highlight per theme */
+.bg-home .center-text {
+    border: 2px solid #fc00ff;
+    box-shadow: 0 0 12px #00c3ff, 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.bg-cp .center-text {
+    border: 3px solid #43e97b;
+    box-shadow: 0 0 12px #43e97b, 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.bg-xp .center-text {
+    border: 3px solid #1e90ff;
+    box-shadow: 0 0 12px #1e90ff, 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.bg-mental .center-text {
+    border: 3px solid #7289da;
+    box-shadow: 0 0 12px #7289da, 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.bg-nosleep .center-text {
+    border: 3px solid #ff512f;
+    box-shadow: 0 0 12px #ff512f, 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }

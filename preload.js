@@ -17,5 +17,5 @@ pagesToPreload.forEach(page => {
     }
 });
 
-// // Export cache for use in onepage.js
-// window.pageCache = pageCache;
+// Export cache for use in onepage.js
+window.pageCache = pageCache;

@@ -22,10 +22,9 @@ document.querySelectorAll('.nav-links a').forEach(link => {
                 if (newBodyClass !== null) {
                     document.body.setAttribute('class', newBodyClass);
                 }
-                // Re-trigger animation
                 const centerText = document.querySelector('.center-text');
                 centerText.classList.remove('fadeIn');
-                void centerText.offsetWidth; // Force reflow
+                void centerText.offsetWidth;
                 centerText.classList.add('fadeIn');
             }
             window.history.pushState({}, '', url);
@@ -33,7 +32,6 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     });
 });
 
-// Handle browser navigation (back/forward)
 window.addEventListener('popstate', function () {
     fetch(location.pathname)
         .then(response => response.text())
