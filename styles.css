@@ -157,6 +157,38 @@ h1::after {
     animation: fadeIn 1.2s;
 }
 
+/* New three-column layout: left embed, center content, right embed */
+.content-layout {
+    display: grid;
+    grid-template-columns: 1fr minmax(300px, 520px) 1fr;
+    gap: 24px;
+    align-items: start;
+    justify-content: center;
+    width: 100%;
+    padding: 0 20px 60px 20px;
+    box-sizing: border-box;
+}
+
+.side-embed {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+.side-embed .youtubevideo,
+.side-embed .twitchchannel {
+    width: 100%;
+    max-width: 420px;
+}
+
+.side-embed iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    max-height: 480px;
+    border-radius: 6px;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -304,9 +336,10 @@ audio:hover {
 }
 
 @media (max-width: 900px) {
-    .video-embeds {
-        flex-direction: column;
-        gap: 24px;
+    .content-layout {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 0 16px 40px 16px;
     }
 }
 
