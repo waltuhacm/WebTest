@@ -12,6 +12,7 @@ function extractFragments(html) {
         content: doc.querySelector('.center-text') ? doc.querySelector('.center-text').innerHTML : null,
         song: doc.querySelector('.song-info') ? doc.querySelector('.song-info').innerHTML : null,
         nav: doc.querySelector('.nav-links') ? doc.querySelector('.nav-links').innerHTML : null,
+        layout: doc.querySelector('.content-layout') ? doc.querySelector('.content-layout').outerHTML : null,
         bodyClass: doc.body.getAttribute('class') || null
     };
 }

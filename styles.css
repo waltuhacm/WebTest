@@ -167,6 +167,7 @@ h1::after {
     width: 100%;
     padding: 0 20px 60px 20px;
     box-sizing: border-box;
+    animation: fadeIn 1.2s;
 }
 
 .side-embed {

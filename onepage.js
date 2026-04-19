@@ -10,19 +10,19 @@ async function navigateTo(url, push = true) {
     try {
         const cache = window.pageCache && window.pageCache[url];
         let fragments = cache;
-        if (push) window.history.pushState({}, fragments.title || '', url);
         if (!fragments) {
             // fetch full HTML and extract fragments (fallback)
             const res = await fetch(url, { credentials: 'same-origin' });
             const html = await res.text();
             const parser = new DOMParser();
-        return { ok: false, error: err };
+            const doc = parser.parseFromString(html, 'text/html');
             fragments = {
                 title: doc.title || null,
                 header: doc.querySelector('h1') ? doc.querySelector('h1').outerHTML : null,
                 content: doc.querySelector('.center-text') ? doc.querySelector('.center-text').innerHTML : null,
                 song: doc.querySelector('.song-info') ? doc.querySelector('.song-info').innerHTML : null,
                 nav: doc.querySelector('.nav-links') ? doc.querySelector('.nav-links').innerHTML : null,
+                layout: doc.querySelector('.content-layout') ? doc.querySelector('.content-layout').outerHTML : null,
                 bodyClass: doc.body.getAttribute('class') || null,
                 // run inline scripts from fetched page (if any)
                 inlineScripts: Array.from(doc.querySelectorAll('script')).filter(s => !s.src).map(s => s.textContent)
@@ -33,6 +33,32 @@ async function navigateTo(url, push = true) {
         if (fragments.header) {
             const currentHeader = document.querySelector('h1');
             if (currentHeader) currentHeader.outerHTML = fragments.header;
+        }
+
+        if (fragments.layout !== undefined) {
+            const currentLayout = document.querySelector('.content-layout');
+            if (fragments.layout) {
+                if (currentLayout) {
+                    currentLayout.outerHTML = fragments.layout;
+                } else {
+                    const oldCenterText = document.querySelector('.center-text');
+                    if (oldCenterText && !oldCenterText.closest('.content-layout')) {
+                        oldCenterText.remove();
+                    }
+                    const currentNav = document.querySelector('.nav-links');
+                    if (currentNav) {
+                        currentNav.insertAdjacentHTML('afterend', fragments.layout);
+                    }
+                }
+            } else if (currentLayout) {
+                currentLayout.remove();
+                if (!document.querySelector('.center-text')) {
+                    const placeholder = document.createElement('div');
+                    placeholder.className = 'center-text';
+                    const currentNav = document.querySelector('.nav-links');
+                    if (currentNav) currentNav.insertAdjacentElement('afterend', placeholder);
+                }
+            }
         }
 
         if (fragments.content) {
@@ -82,6 +108,7 @@ async function navigateTo(url, push = true) {
         }
 
         if (push) window.history.pushState({}, fragments.title || '', url);
+        return { ok: true };
     } catch (err) {
         console.error('Navigation failed', err);
         // fallback to full navigation if something goes wrong
