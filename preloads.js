@@ -1,6 +1,6 @@
-const pagesToPreload = ['home.html', 'mhc.html', 'ips.html', 'ccp.html'];
+// This file and the functions within it exist to load all pages of the entire while at start.html. This the end goal is to have all pages load significantly faster, especially when there is no cache.
+const pagesToPreload = ['home.html', 'mhc.html', 'ips.html', 'pro.html'];
 
-// pageCache stores extracted fragments rather than full HTML to reduce memory
 const pageCache = {};
 
 function extractFragments(html) {
@@ -24,7 +24,6 @@ async function preloadPage(page) {
         const html = await res.text();
         pageCache[page] = extractFragments(html);
     } catch (err) {
-        // Don't fail the rest of the preloads
         console.warn('preload failed for', page, err);
     }
 }
@@ -35,7 +34,6 @@ function schedulePreloads() {
             if (window.location.pathname.endsWith(page)) continue;
             if (pageCache[page]) continue;
             await preloadPage(page);
-            // small gap to avoid pounding the network
             await new Promise(r => setTimeout(r, 120));
         }
     };
@@ -43,12 +41,10 @@ function schedulePreloads() {
     if ('requestIdleCallback' in window) {
         requestIdleCallback(() => work(), { timeout: 2000 });
     } else {
-        // Delay slightly so page load isn't impacted
         setTimeout(work, 1500);
     }
 }
 
 schedulePreloads();
 
-// Export cache for use in `onepage.js`
 window.pageCache = pageCache;
