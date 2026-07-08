@@ -1,3 +1,5 @@
+// This isn't really a file I "made" manually, but it's still cruicial for an extension I use to get a live preview of the website as I work on it.
+
 {
     "liveServer.settings.port": 5501
 }

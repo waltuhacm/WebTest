@@ -1,4 +1,5 @@
 // This file and the functions within it exist to load all pages of the entire while at start.html. This the end goal is to have all pages load significantly faster, especially when there is no cache.
+
 const pagesToPreload = ['home.html', 'mhc.html', 'ips.html', 'pro.html'];
 
 const pageCache = {};

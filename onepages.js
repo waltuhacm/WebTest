@@ -1,4 +1,5 @@
 // This file and the functions within it exist to try and help with preload.js by handling the actual the navigation and content swapping when going between pages. The end goal is to avoid having the whole site refresh fully with each click.
+
 document.addEventListener('click', function (e) {
     const anchor = e.target.closest('.nav-links a');
     if (!anchor) return;
